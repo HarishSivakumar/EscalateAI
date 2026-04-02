@@ -1,36 +1,279 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚨 EscalateAI — AI-Powered Escalation Intelligence Platform
 
-## Getting Started
+## 📌 Overview
 
-First, run the development server:
+**EscalateAI** is an AI-driven system designed to enhance **Incident & Case Management (ICM)** workflows by proactively identifying and preventing customer support escalations.
+
+It analyzes conversations in real time, detects failure signals, predicts escalation risk, and provides actionable insights through interactive dashboards.
+
+> 🎯 **Goal:** Detect issues early and prevent escalation before it happens.
+
+---
+
+## ✨ Features
+
+### 🔍 Real-Time Conversation Analysis
+
+* Dynamic analysis of user-agent conversations
+* Tracks conversation progression over time
+* Identifies early warning signals
+
+### ⚠️ Escalation Risk Prediction
+
+* Predicts escalation probability (0 → 1)
+* Classifies risk: **Low / Medium / High**
+* Detects escalation at **turn-level granularity**
+
+### 🧩 Failure Signal Detection
+
+Structured signal extraction including:
+
+* Resolution failure
+* Repetition detection
+* Technical errors
+* Response delays
+* Communication gaps
+* Emotional escalation
+
+### 😊 Sentiment & Emotion Tracking
+
+* Tracks emotional progression (Neutral → Negative → Frustrated)
+* Detects frustration spikes
+* Correlates sentiment with escalation risk
+
+### 🔥 Priority Classification
+
+Automatically assigns:
+
+* **P1 (Critical)**
+* **P2 (High)**
+* **P3 (Medium/Low)**
+
+Based on urgency, impact, and failure severity.
+
+### 📊 Explainability Engine
+
+Provides reasoning behind predictions:
+
+* Repeated unresolved issues
+* Negative sentiment trends
+* High urgency signals
+
+### 🧾 Conversation Summary
+
+* Structured summaries
+* Full transcript storage
+* Highlighted critical moments
+
+---
+
+## 📈 Analytics & Dashboards
+
+### Conversation Insights
+
+* Escalation rate
+* Risk distribution
+* Conversation volume
+
+### Failure Analysis
+
+* Top escalation drivers
+* Signal frequency breakdown
+
+### Trend Analysis
+
+* Escalations over time
+* Risk progression graphs
+
+### 🧪 Model Evaluation
+
+* Precision, Recall, F1 Score, Accuracy
+* Early Detection Score
+* False Positive Rate
+* Latency tracking
+
+---
+
+## 💬 Live Monitoring Interface
+
+* Chat-style UI
+* Real-time analysis
+* Instant risk updates
+
+---
+
+## 🏥 System Health Monitoring
+
+* API latency
+* Model performance
+* Error rates
+* Uptime tracking
+
+---
+
+## 🧩 Architecture
+
+```
+Frontend (Next.js)
+        ↓
+Backend API (FastAPI / Node)
+        ↓
+AI Engine (ML + LLM + Rules)
+        ↓
+Database (Supabase / SQLite)
+        ↓
+Dashboards & Analytics
+```
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* Next.js (App Router)
+* TypeScript
+* Tailwind CSS
+* shadcn/ui
+* Recharts
+
+### Backend
+
+* FastAPI (Python) / Node.js
+* REST APIs
+
+### AI / ML
+
+* scikit-learn
+* Rule-based signal extraction
+* LLM integration (Ollama / APIs)
+
+### Database
+
+* Supabase (PostgreSQL) / SQLite
+
+### DevOps
+
+* Vercel (Frontend)
+* Render (Backend)
+* GitHub Actions
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/harishsivakumar/EscalateAI.git
+cd EscalateAI
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the frontend
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App will be available at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📡 API Example
 
-To learn more about Next.js, take a look at the following resources:
+### Endpoint
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+POST /analyze
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Request
 
-## Deploy on Vercel
+```json
+{
+  "conversation_id": "conv_001",
+  "messages": [
+    { "role": "user", "text": "My API is not working" },
+    { "role": "agent", "text": "Can you share logs?" },
+    { "role": "user", "text": "Still not working" }
+  ]
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Response
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```json
+{
+  "escalation_risk": 0.82,
+  "priority": "HIGH",
+  "predicted_escalation": true,
+  "detected_at_turn": 3,
+  "signals": {
+    "repetition_count": 1,
+    "resolution_failure": true
+  },
+  "explanation": [
+    "Issue repeated",
+    "No resolution detected",
+    "Negative sentiment increasing"
+  ]
+}
+```
+
+---
+
+## 🎯 Use Cases
+
+* SaaS Customer Support Platforms
+* Incident & Case Management Systems
+* IT Helpdesk Automation
+* Customer Experience Optimization
+
+---
+
+## 🚀 Key Differentiators
+
+* Real-time escalation detection
+* Early warning system (pre-escalation)
+* Explainable AI outputs
+* Hybrid system (ML + LLM + rules)
+* Production-ready architecture
+
+---
+
+## 🔮 Future Enhancements
+
+* RAG-based response suggestions
+* Agent recommendation system
+* Real-time streaming (WebSockets)
+* CRM integrations
+* Multi-tenant architecture
+
+---
+
+## 👨‍💻 Author
+
+**Harish Sivakumar**
+
+---
+
+## 📌 Summary
+
+EscalateAI is a **production-style AI system** combining:
+
+* Predictive intelligence
+* Real-time monitoring
+* Explainability
+* Analytics
+
+👉 Built to simulate real-world AI systems used in modern customer support environments.
